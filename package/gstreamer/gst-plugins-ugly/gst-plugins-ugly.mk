@@ -4,4 +4,6 @@ GST_PLUGINS_UGLY_SITE = https://gstreamer.freedesktop.org/src/gst-plugins-ugly
 
 GST_PLUGINS_UGLY_DEPENDENCIES=gstreamer gst-plugins-base
 
+GST_PLUGINS_UGLY_CONF_OPTS=
+
 $(eval $(autotools-package))

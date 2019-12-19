@@ -1,5 +1,5 @@
 BUILD_DIR=/home/wangyang/study/enviroment/build
-INSTALL_DIR=/home/wangyang/3rd_party
+INSTALL_DIR=/home/wangyang/3rdparty
 LIST:=
 
 define autotools_package2
@@ -18,9 +18,9 @@ define handle_item
 	@if test -d $(BUILD_DIR)/$(shell basename -s .tar.xz $($1_SOURCE)) ; then : ; \
 		else tar -xvf $(BUILD_DIR)/$($1_SOURCE) -C $(BUILD_DIR) >>/dev/null ; \
 		fi ; 
-	@if test -f $(BUILD_DIR)/$(shell basename -s .tar.xz $($1_SOURCE))/Makefile ; \
+	@if test -f $(BUILD_DIR)/$(shell basename -s .tar.xz $($1_SOURCE))/config.h ; \
 		then : ; \
-		else cd $(BUILD_DIR)/$(shell basename -s .tar.xz $($1_SOURCE)) && ./configure --prefix=$(INSTALL_DIR) && make && make install ; \
+		else cd $(BUILD_DIR)/$(shell basename -s .tar.xz $($1_SOURCE)) && ./configure $($1_CONF_OPTS) --prefix=$(INSTALL_DIR) && make && make install ; \
 		fi ; 
 endef
 

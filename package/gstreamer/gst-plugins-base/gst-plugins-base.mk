@@ -4,4 +4,6 @@ GST_PLUGINS_BASE_SITE = https://gstreamer.freedesktop.org/src/gst-plugins-base
 
 GST_PLUGINS_BASE_DEPENDENCIES=gstreamer
 
+GST_PLUGINS_BASE_CONF_OPTS=
+
 $(eval $(autotools-package))

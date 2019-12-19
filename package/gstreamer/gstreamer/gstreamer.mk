@@ -4,4 +4,6 @@ GSTREAMER_SITE = https://gstreamer.freedesktop.org/src/gstreamer
 
 GSTREAMER_DEPENDENCIES=
 
+GSTREAMER_CONF_OPTS=
+
 $(eval $(autotools-package))
