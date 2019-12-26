@@ -1,4 +1,3 @@
 # enviroment
-set up the build enviroment oneshot for new machine.
+build gstreamer on ubuntu just with make command.
 
-1. gstreamer 1.14.5
