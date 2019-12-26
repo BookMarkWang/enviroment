@@ -1,5 +1,5 @@
-BUILD_DIR=/home/wangyang/study/enviroment/build
-INSTALL_DIR=/home/wangyang/3rdparty
+BUILD_DIR=$(CURDIR)/build
+INSTALL_DIR=$(CURDIR)/install
 
 TARGETS_FORMAT:=
 TARGETS_NORMAL:=
