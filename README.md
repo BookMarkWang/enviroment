@@ -12,3 +12,5 @@ make [package name] 编译单独的某个库。例如：make gstreamer 或 make 
 
 当前支持：glib, ffmpeg, gstreamer
 
+PS: you should install make gcc g++ first. after build should set the enviroment before build your own project.
+
