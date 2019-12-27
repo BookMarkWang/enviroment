@@ -43,7 +43,7 @@ define handle_item
 
 	@if test -f $(BUILD_PATH)/.build_complete ; \
 		then : ; \
-		else cd $(BUILD_PATH) && ./configure $($1_CONF_OPTS) --prefix=$(INSTALL_DIR) $($1_CONF_ENV) && make && make install ; \
+		else cd $(BUILD_PATH) && $($1_CONF_ENV) ./configure $($1_CONF_OPTS) --prefix=$(INSTALL_DIR) && make && make install ; \
 		fi ; 
 
 	@if test -f $(BUILD_PATH)/.build_complete ; \
