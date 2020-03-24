@@ -1,4 +1,4 @@
-GST_PLUGINS_BASE_VERSION = 1.14.4
+GST_PLUGINS_BASE_VERSION = 1.16.2
 GST_PLUGINS_BASE_SOURCE = gst-plugins-base-$(GST_PLUGINS_BASE_VERSION).tar.xz
 GST_PLUGINS_BASE_SITE = https://gstreamer.freedesktop.org/src/gst-plugins-base
 
@@ -6,4 +6,4 @@ GST_PLUGINS_BASE_DEPENDENCIES=gstreamer
 
 GST_PLUGINS_BASE_CONF_OPTS=
 
-$(eval $(autotools-package))
+$(eval $(meson-package))
