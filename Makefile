@@ -1,5 +1,5 @@
-BUILD_DIR=$(CURDIR)/build
-INSTALL_DIR=$(CURDIR)/install
+BUILD_DIR=./build
+INSTALL_DIR=/home/wangyang/3rdparty/
 MESON=meson
 
 TARGETS_FORMAT:=
