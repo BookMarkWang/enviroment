@@ -19,12 +19,12 @@ endef
 
 r_handle_package=$(foreach d,$($1_DEPENDENCIES), $(call r_handle_package,$(strip $(subst -,_, $(shell echo $d | tr '[a-z]' '[A-Z]'))))) $(call handle_item,$1)
 
-export PKG_CONFIG_PATH:=$(INSTALL_DIR)/lib/pkgconfig:${PKG_CONFIG_PATH}
+export PKG_CONFIG_PATH:=$(INSTALL_DIR)/lib/pkgconfig:$(INSTALL_DIR)/lib64/pkgconfig:${PKG_CONFIG_PATH}
 export C_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(C_INCLUDE_PATH)
 export CPP_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(CPP_INCLUDE_PATH)
 export PATH:=$(INSTALL_DIR)/bin:${PATH}
-export LD_LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(LD_LIBRARY_PATH)
-export LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(LIBRARY_PATH)
+export LD_LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(INSTALL_DIR)/lib64:$(LD_LIBRARY_PATH)
+export LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(INSTALL_DIR)/lib64:$(LIBRARY_PATH)
 
 export PKG_CONFIG:=$(INSTALL_DIR)/bin/pkgconf
 export CC:=gcc

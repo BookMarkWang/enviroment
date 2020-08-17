@@ -1,0 +1,12 @@
+NETTLE_VERSION_MAJOR = 3.6
+NETTLE_VERSION = $(NETTLE_VERSION_MAJOR)
+NETTLE_SOURCE = nettle-$(NETTLE_VERSION).tar.gz
+NETTLE_SITE = https://ftp.gnu.org/gnu/nettle
+
+NETTLE_DEPENDENCIES=pkgconf
+
+NETTLE_CONF_ENV =
+
+NETTLE_CONF_OPTS=
+
+$(eval $(autotools-package))

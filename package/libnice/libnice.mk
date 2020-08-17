@@ -1,0 +1,12 @@
+LIBNICE_VERSION_MAJOR = 0.1.17
+LIBNICE_VERSION = $(LIBNICE_VERSION_MAJOR)
+LIBNICE_REAL_SOURCE = libnice-$(LIBNICE_VERSION).tar.gz
+LIBNICE_SITE = https://github.com/libnice/libnice/archive/$(LIBNICE_VERSION).tar.gz
+
+LIBNICE_DEPENDENCIES=pkgconf
+
+LIBNICE_CONF_ENV =
+
+LIBNICE_CONF_OPTS=
+
+$(eval $(meson-package))
