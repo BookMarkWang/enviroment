@@ -1,4 +1,4 @@
-GSTREAMER_VERSION = 1.16.2
+GSTREAMER_VERSION = 1.18.2
 GSTREAMER_SOURCE = gstreamer-$(GSTREAMER_VERSION).tar.xz
 GSTREAMER_SITE = https://gstreamer.freedesktop.org/src/gstreamer
 
