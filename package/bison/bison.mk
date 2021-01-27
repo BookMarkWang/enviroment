@@ -1,4 +1,4 @@
-BISON_VERSION = 3.0.4
+BISON_VERSION = 3.7.4
 BISON_SOURCE = bison-$(BISON_VERSION).tar.xz
 BISON_SITE = https://ftp.gnu.org/gnu/bison/
 
