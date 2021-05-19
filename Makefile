@@ -1,6 +1,9 @@
 BUILD_DIR=./build
 INSTALL_DIR=/home/wangyang/3rdparty/
 MESON=meson
+CMAKE=cmake
+AUTOTOOLS=autotools
+TMP_PATH=
 
 TARGETS_FORMAT:=
 TARGETS_NORMAL:=
@@ -40,7 +43,10 @@ define handle_item
 	$(eval $1_SOURCE:=$($1_SOURCE) $($1_REAL_SOURCE))
 	$(eval $1_SOURCE:=$(firstword $(strip $($1_SOURCE))))
 
-	$(eval BUILD_PATH := $(BUILD_DIR)/$(firstword $(subst .tar, ,$($1_SOURCE))))
+	$(eval $1_SOURCE_NAME:=$($1_SOURCE_NAME) $(firstword $(subst .tar, ,$($1_SOURCE))))
+	$(eval $1_SOURCE_NAME:=$(firstword $(strip $($1_SOURCE_NAME))))
+	$(eval BUILD_PATH := $(BUILD_DIR)/$($1_SOURCE_NAME))
+
 	$(eval PATCH_FILES := $(strip $(wildcard $($1_DIR)/*.patch)))
 
 	@if test ! -d  $(BUILD_PATH); then tar -xvf $(BUILD_DIR)/$($1_SOURCE) -C $(BUILD_DIR) ; for i in $(PATCH_FILES); do cd $(BUILD_PATH) && patch -p1 < $$i; done ; fi ;
@@ -49,7 +55,9 @@ define handle_item
 	$(info $(BUILD_PATH))
 	@if test -f $(BUILD_PATH)/.build_complete ; \
 		then : ; \
-		else if test $($1_TOOL) = meson ; then cd $(BUILD_PATH) && $(MESON) $($1_CONF_ENV) --prefix $(INSTALL_DIR) --libdir lib build && ninja -C build &&  $(MESON) install -C build ; else cd $(BUILD_PATH) && $($1_CONF_ENV) ./configure $($1_CONF_OPTS) --prefix=$(INSTALL_DIR) && make && make install ; fi ; \
+		else if test $($1_TOOL) = $(MESON) ; then cd $(BUILD_PATH) && $(MESON) $($1_CONF_ENV) --prefix $(INSTALL_DIR) --libdir lib build && ninja -C build &&  $(MESON) install -C build ; \
+		elif test $($1_TOOL) = $(CMAKE) ; then cd $(BUILD_PATH) && mkdir -p build && cd build && cmake -DCMAKE_INSTALL_PREFIX=$(INSTALL_DIR) $($1_CONF_OPTS) .. && make && make install ; \
+		elif test $($1_TOOL) = $(AUTOTOOLS) ; then cd $(BUILD_PATH) && $($1_CONF_ENV) ./configure $($1_CONF_OPTS) --prefix=$(INSTALL_DIR) && make && make install ; fi ; \
 		fi ; 
 
 	@if test -f $(BUILD_PATH)/.build_complete ; \
@@ -61,6 +69,8 @@ endef
 autotools-package=$(call prepare_package,autotools)
 
 meson-package=$(call prepare_package,meson)
+
+cmake-package=$(call prepare_package,cmake)
 
 
 include package/*/*.mk

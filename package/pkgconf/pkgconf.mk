@@ -1,5 +1,5 @@
-PKGCONF_VERSION = 1.0.1
-PKGCONF_SITE = http://rabbit.dereferenced.org/~nenolod/distfiles
+PKGCONF_VERSION = 1.7.4
+PKGCONF_SITE = https://distfiles.dereferenced.org/pkgconf
 PKGCONF_SOURCE = pkgconf-$(PKGCONF_VERSION).tar.xz
 
 PKGCONF_DEPENDENCIES=

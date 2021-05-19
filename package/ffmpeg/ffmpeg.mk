@@ -4,6 +4,6 @@ FFMPEG_SITE = http://ffmpeg.org/releases
 
 FFMPEG_DEPENDENCIES=yasm
 
-FFMPEG_CONF_OPTS=--enable-shared --enable-libx264 --enable-gpl --enable-libsrt
+FFMPEG_CONF_OPTS=--enable-shared --enable-libx264 --enable-gpl
 
 $(eval $(autotools-package))
