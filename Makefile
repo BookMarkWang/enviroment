@@ -23,8 +23,8 @@ endef
 r_handle_package=$(foreach d,$($1_DEPENDENCIES), $(call r_handle_package,$(strip $(subst -,_, $(shell echo $d | tr '[a-z]' '[A-Z]'))))) $(call handle_item,$1)
 
 export PKG_CONFIG_PATH:=$(INSTALL_DIR)/lib/pkgconfig:$(INSTALL_DIR)/lib64/pkgconfig:${PKG_CONFIG_PATH}
-export C_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(C_INCLUDE_PATH)
-export CPP_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(CPP_INCLUDE_PATH)
+#export C_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(C_INCLUDE_PATH)
+#export CPP_INCLUDE_PATH:=$(INSTALL_DIR)/include:$(CPP_INCLUDE_PATH)
 export PATH:=$(INSTALL_DIR)/bin:${PATH}
 export LD_LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(INSTALL_DIR)/lib64:$(LD_LIBRARY_PATH)
 export LIBRARY_PATH:=$(INSTALL_DIR)/lib:$(INSTALL_DIR)/lib64:$(LIBRARY_PATH)
@@ -49,7 +49,7 @@ define handle_item
 
 	$(eval PATCH_FILES := $(strip $(wildcard $($1_DIR)/*.patch)))
 
-	@if test ! -d  $(BUILD_PATH); then tar -xvf $(BUILD_DIR)/$($1_SOURCE) -C $(BUILD_DIR) ; for i in $(PATCH_FILES); do cd $(BUILD_PATH) && patch -p1 < $$i; done ; fi ;
+	@if test ! -d $(BUILD_PATH); then tar -xvf $(BUILD_DIR)/$($1_SOURCE) -C $(BUILD_DIR) ; for i in $(PATCH_FILES); do cd $(BUILD_PATH) && patch -p1 < $$i; done ; fi ;
 
 	$(info $($1_TOOL))
 	$(info $(BUILD_PATH))
